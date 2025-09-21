@@ -79,7 +79,7 @@ def demo_response(mode: str, question: str = "", context_text: str = "", error: 
         )
     elif mode == "qa":
         return (
-            f"⚠️ Demo mode active (API not available).\n\n"
+            f"⚠️ Demo mode active (API not available/ Limit Exceeded).\n\n"
             f"**Your Question:** {question}\n\n"
             "- The document defines obligations and restrictions.\n"
             "- Some risks may apply.\n"
@@ -90,7 +90,7 @@ def demo_response(mode: str, question: str = "", context_text: str = "", error: 
 
 # ---------- OpenAI interactions ----------
 def call_openai_chat(system_prompt: str, user_prompt: str, model=DEFAULT_MODEL,
-                     temperature=0.2, max_tokens=MAX_SUMMARY_TOKENS, context_text=""):
+                    temperature=0.2, max_tokens=MAX_SUMMARY_TOKENS, context_text=""):
     if not openai.api_key:
         return demo_response("summary", context_text=context_text)
     try:
@@ -143,13 +143,13 @@ st.write("Upload a legal document (PDF/DOCX/TXT). Get a plain-language summary, 
 
 # Sidebar: API key and options
 st.sidebar.header("Settings & API Key")
-api_key_input = st.sidebar.text_input("Enter OpenAI API key (or set OPENAI_API_KEY env var)", type="password")
-if api_key_input:
-    set_api_key(api_key_input)
+
+env_key = os.getenv("OPENAI_API_KEY", "")
+if env_key:
+    set_api_key(env_key)
+    st.sidebar.success("✅ API key loaded from environment")
 else:
-    env_key = os.getenv("OPENAI_API_KEY", "")
-    if env_key:
-        set_api_key(env_key)
+    st.sidebar.warning("⚠️ No API key found — running in Demo Mode (sample outputs only)")
 
 model_choice = st.sidebar.selectbox("Model", options=[DEFAULT_MODEL, "gpt-4"], index=0)
 if model_choice:
