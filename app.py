@@ -69,7 +69,7 @@ def demo_response(mode: str, question: str = "", context_text: str = "", error: 
     snippet = context_text[:500].replace("\n", " ") if context_text else "Sample contract text between two parties."
     if mode == "summary":
         return (
-            "⚠️ Demo mode active (API not available/ Limit Exceeded).\n\n"
+            "🛡️ Demo mode active (API not available/ Limit Exceeded).\n\n"
             "Sample summary based on uploaded document:\n"
             f"- Document begins with: '{snippet[:120]}...'\n"
             "- This is an agreement between at least two parties.\n"
@@ -79,14 +79,14 @@ def demo_response(mode: str, question: str = "", context_text: str = "", error: 
         )
     elif mode == "qa":
         return (
-            f"⚠️ Demo mode active (API not available/ Limit Exceeded).\n\n"
+            f"🛡️ Demo mode active (API not available/ Limit Exceeded).\n\n"
             f"**Your Question:** {question}\n\n"
             "- The document defines obligations and restrictions.\n"
             "- Some risks may apply.\n"
             "- Please review the document for specific details.\n"
             f"{'[Error: ' + error + ']' if error else ''}"
         )
-    return "⚠️ Demo mode: Example output."
+    return "🛡️ Demo mode: Example output."
 
 # ---------- OpenAI interactions ----------
 def call_openai_chat(system_prompt: str, user_prompt: str, model=DEFAULT_MODEL,
@@ -142,7 +142,7 @@ st.title("🧾 Generative AI — Demystifying Legal Documents")
 st.write("Upload a legal document (PDF/DOCX/TXT). Get a plain-language summary, risk highlights, and ask questions about the document.")
 
 # Sidebar: API key and options
-st.sidebar.header("Settings & API Key")
+st.sidebar.header("⚙️ Settings & API Key")
 
 env_key = os.getenv("OPENAI_API_KEY", "")
 if env_key:
@@ -151,17 +151,17 @@ if env_key:
 else:
     st.sidebar.warning("⚠️ No API key found — running in Demo Mode (sample outputs only)")
 
-model_choice = st.sidebar.selectbox("Model", options=[DEFAULT_MODEL, "gpt-4"], index=0)
+model_choice = st.sidebar.selectbox("🤖 Model", options=[DEFAULT_MODEL, "gpt-4"], index=0)
 if model_choice:
     DEFAULT_MODEL = model_choice
 
-st.sidebar.markdown("**Risk keyword list** (editable)")
+st.sidebar.markdown("**⚠️ Risk keyword list** (editable)")
 keywords_text = st.sidebar.text_area("Comma-separated keywords", value=", ".join(RISK_KEYWORDS), height=120)
 if keywords_text:
     RISK_KEYWORDS = [k.strip().lower() for k in keywords_text.split(",") if k.strip()]
 
 # File upload
-uploaded_file = st.file_uploader("Upload a legal document (PDF, DOCX, TXT)", type=["pdf", "docx", "txt"])
+uploaded_file = st.file_uploader("📂 Upload a legal document (PDF, DOCX, TXT)", type=["pdf", "docx", "txt"])
 col1, col2 = st.columns([1, 1])
 
 with col1:
@@ -185,7 +185,7 @@ with col1:
 with col2:
     st.header("Actions")
     if doc_text:
-        if st.button("Generate Plain-Language Summary"):
+        if st.button("📝 Generate Plain-Language Summary"):
             with st.spinner("Generating summary..."):
                 summary = summarize_text(doc_text, model=DEFAULT_MODEL)
                 st.success("Summary generated.")
@@ -193,7 +193,7 @@ with col2:
                 st.write(summary)
                 st.session_state["summary"] = summary
 
-        if st.button("Run Risk Flagging"):
+        if st.button("⚠️ Run Risk Flagging"):
             with st.spinner("Detecting risk clauses..."):
                 flags = naive_risk_flagging(doc_text, RISK_KEYWORDS)
                 if flags:
@@ -206,7 +206,7 @@ with col2:
 
         st.markdown("---")
         st.markdown("### Quick actions")
-        if st.button("Generate Summary + Risk Flags (All-in-one)"):
+        if st.button("📝 Generate Summary + ⚠️ Risk Flags (All-in-one)"):
             with st.spinner("Working..."):
                 summary = summarize_text(doc_text, model=DEFAULT_MODEL)
                 flags = naive_risk_flagging(doc_text, RISK_KEYWORDS)
@@ -223,7 +223,7 @@ with col2:
 
 # Chat / Q&A
 st.markdown("---")
-st.header("Ask questions about the document")
+st.header("❓Ask questions about the document")
 
 if "chat_history" not in st.session_state:
     st.session_state["chat_history"] = []
