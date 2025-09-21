@@ -69,7 +69,7 @@ def demo_response(mode: str, question: str = "", context_text: str = "", error: 
     snippet = context_text[:500].replace("\n", " ") if context_text else "Sample contract text between two parties."
     if mode == "summary":
         return (
-            "⚠️ Demo mode active (API not available).\n\n"
+            "⚠️ Demo mode active (API not available/ Limit Exceeded).\n\n"
             "Sample summary based on uploaded document:\n"
             f"- Document begins with: '{snippet[:120]}...'\n"
             "- This is an agreement between at least two parties.\n"
