@@ -55,10 +55,13 @@ setx OPENAI_API_KEY "sk-xxxxxxxx"
 
 ## Screenshots
 
-- <img width="1865" height="877" alt="image" src="https://github.com/user-attachments/assets/2b0ff7e2-f3cb-4f85-9db6-60d980c2d32e" />
+- Home Page
+  <img width="1865" height="884" alt="image" src="https://github.com/user-attachments/assets/e206fa6d-e62a-4cf5-864b-25d447bda631" />
 
 
-- <img width="1863" height="878" alt="image" src="https://github.com/user-attachments/assets/49aa14fb-a66c-4c49-8b5c-9c663c129cbf" />
+- Home Page with feature Testing
+  <img width="1865" height="876" alt="image" src="https://github.com/user-attachments/assets/4996def3-4b3e-44f8-a6ee-1c1cfd935a0b" />
+
 
 ---
 ### 5️⃣ Run the app
