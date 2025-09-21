@@ -51,7 +51,16 @@ Windows (PowerShell):
 setx OPENAI_API_KEY "sk-xxxxxxxx"
 ```
 
+---
 
+## Screenshots
+
+- <img width="1865" height="877" alt="image" src="https://github.com/user-attachments/assets/2b0ff7e2-f3cb-4f85-9db6-60d980c2d32e" />
+
+
+- <img width="1863" height="878" alt="image" src="https://github.com/user-attachments/assets/49aa14fb-a66c-4c49-8b5c-9c663c129cbf" />
+
+---
 ### 5️⃣ Run the app
 
 ```bash
