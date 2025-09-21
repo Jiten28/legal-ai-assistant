@@ -102,7 +102,7 @@ python-docx
 
 ## 👨‍💻 Author
 
-Built by \Jiten Kumar for the **Generative AI Hackathon 2025**.
+Built by Jiten Kumar for the **Generative AI Hackathon 2025**.
 
 ```
 
@@ -113,7 +113,7 @@ Built by \Jiten Kumar for the **Generative AI Hackathon 2025**.
 ✅ **Local Development**  
 1. `python -m venv venv && venv\Scripts\activate` (Windows)  
 2. `pip install -r requirements.txt`  
-3. `setx OPENAI_API_KEY "sk-xxxxx"` (Windows) or `export OPENAI_API_KEY="sk-xxxxx"` (Linux/Mac)  
+3. `setx OPENAI_API_KEY "sk-xxxxx"` (Windows)
 4. `streamlit run app.py`
 
 ✅ **Streamlit Cloud Deploy**  
