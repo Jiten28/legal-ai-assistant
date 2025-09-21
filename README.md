@@ -113,9 +113,6 @@ python-docx
 
 Built by Jiten Kumar for the **Generative AI Hackathon 2025**.
 
-```
-
----
 
 # 🛠️ How to Run (Quick Recap)
 
@@ -131,4 +128,3 @@ Built by Jiten Kumar for the **Generative AI Hackathon 2025**.
 3. Add API key in **Secrets**.  
 4. Share the **public link** in submission.  
 
----
